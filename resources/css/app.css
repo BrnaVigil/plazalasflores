@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+@layer components {
+    
+    .btn-mas-info {
+        @apply bg-lime-400 hover:bg-lime-200/50 text-white font-bold px-6 py-3 rounded-full text-center w-full flex items-center justify-center
+    }  
+    
+    .btn-renta-local {
+        @apply bg-white hover:bg-white/20 font-bold px-6 py-3 rounded-full text-center w-full flex items-center justify-center;
+    }
+}
