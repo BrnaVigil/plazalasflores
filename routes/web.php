@@ -65,11 +65,14 @@ Route::get('/comitan', function () {
 Route::get('/tonala', function () {
     return view('tonala');
 });
-Route::get('/viaplaza', function () {
-    return view('viaplaza');
+Route::get('/ciudadhidalgo', function () {
+    return view('ciudadhidalgo');
 });
 Route::get('/palenque', function () {
     return view('palenque');
+});
+Route::get('/gracias', function () {
+    return view('gracias');
 });
 
 Route::middleware([
@@ -155,5 +158,5 @@ Route::get('/comitan', [PaginaController::class, 'comitan']);
 Route::get('/tonala', [PaginaController::class, 'tonala']);
 Route::get('/villaflores', [PaginaController::class, 'villaflores']);
 Route::get('/pinotepa', [PaginaController::class, 'pinotepa']);
-Route::get('/viaplaza', [PaginaController::class, 'viaplaza']);
+Route::get('/ciudadhidalgo', [PaginaController::class, 'viaplaza']);
 Route::get('/palenque', [PaginaController::class, 'palenque']);

@@ -49,12 +49,12 @@ setInterval(() => {
 //-------------------------Animacion del texto Tonala ----------------------
 setInterval(() => {
     const texts = [
-        "del momento",
-        "de la cuidad"
+        "La mejor oportunidad para tu negocio ",
+        "Invierte con nosotros, invierte en México"
     ];
 
     const randomIndex = Math.floor(Math.random() * texts.length);
-    const changingText = document.getElementById('changingText-tonala');
+    const changingText = document.getElementById('changingText-tonala-vf');
     changingText.classList.add('animate__animated', 'animate__flipOutX');
     setTimeout(() => {
         changingText.textContent = texts[randomIndex];
@@ -62,6 +62,24 @@ setInterval(() => {
         changingText.classList.add('animate__flipInX');
     }, 500); // Tiempo de espera antes de cambiar y animar de nuevo
 }, 4000); // Cambiar cada 4 segundos (4000 milisegundos)
+
+//-------------------------Animacion del texto Palenque ----------------------
+setInterval(() => {
+    const texts = [
+        "Plaza Las Flores Palenque",
+        "Invierte con nosotros, invierte en México"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * texts.length);
+    const changingText = document.getElementById('changingText-plq');
+    changingText.classList.add('animate__animated', 'animate__flipOutX');
+    setTimeout(() => {
+        changingText.textContent = texts[randomIndex];
+        changingText.classList.remove('animate__flipOutX');
+        changingText.classList.add('animate__flipInX');
+    }, 500); // Tiempo de espera antes de cambiar y animar de nuevo
+}, 4000); // Cambiar cada 4 segundos (4000 milisegundos)
+
 
 // -----------------------------Slider de fondo-------------------------------------------- //
 const slider = document.getElementById('slider-fondo');
@@ -126,27 +144,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (location === 'comitan') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresComitan/';
-        instagramLink.href = 'pendiente';
+        instagramLink.href = 'https://www.instagram.com/plaza_lasflorescomitan';
     } 
     else if (location === 'tonala') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresTonala';
-        instagramLink.href = 'pendiente';
+        instagramLink.href = 'https://www.instagram.com/PlazaLasFloresTonala';
     } 
     else if (location === 'palenque') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresPalenque/';
-        instagramLink.href = 'pendiente';
+        instagramLink.href = 'https://www.instagram.com/plazalasflorespalenque';
     }
     else if (location === 'villaflores') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresVillaflores/';
-        instagramLink.href = 'pendiente';
+        instagramLink.href = 'https://www.instagram.com/PlazaLasFloresVillaflores';
     } 
     else if (location === 'pinotepa') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresPinotepa';
-        instagramLink.href = 'pendiente';
+        instagramLink.href = 'https://www.instagram.com/PlazaLasFloresPinotepa';
     }
     else if (location === 'viaplaza') {
         facebookLink.href = 'https://www.facebook.com/ViaPlazaCiudadHidalgo/';
-        instagramLink.href = 'pendiente';
+        instagramLink.href = 'https://www.instagram.com/viaplaza_ciudadhidalgo/';
     }
 });
 
@@ -160,27 +178,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (location === 'comitan') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresComitan/';
-        instagramLink.href = 'pendiente';
+        instagramLink.href = 'https://www.instagram.com/plaza_lasflorescomitan';
     } 
     else if (location === 'tonala') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresTonala';
-        instagramLink.href = 'fb_palenque.pendiente';
+        instagramLink.href = 'https://www.instagram.com/PlazaLasFloresTonala';
     } 
     else if (location === 'palenque') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresPalenque/';
-        instagramLink.href = 'ig_palenque.pendiente';
+        instagramLink.href = 'https://www.instagram.com/plazalasflorespalenque';
     }
     else if (location === 'villaflores') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresVillaflores/';
-        instagramLink.href = 'ig_villaflores.pendiente';
+        instagramLink.href = 'https://www.instagram.com/PlazaLasFloresVillaflores';
     }
     else if (location === 'pinotepa') {
         facebookLink.href = 'https://www.facebook.com/PlazaLasFloresPinotepa';
-        instagramLink.href = 'ig_pinotepa.pendiente';
+        instagramLink.href = 'https://www.instagram.com/PlazaLasFloresPinotepa';
     }
     else if (location === 'viaplaza') {
         facebookLink.href = 'https://www.facebook.com/ViaPlazaCiudadHidalgo/';
-        instagramLink.href = 'ig_viaplaza.pendiente';
+        instagramLink.href = 'https://www.instagram.com/viaplaza_ciudadhidalgo/';
     }
 });
 
@@ -194,3 +212,26 @@ function hideSidebar (){
     const sidebar = document.querySelector('.sidebar')
     sidebar.style.display = "none"
 }
+
+// ---------------------------------------- Zoom en la imagen -------------------------------------
+const zoomImage = document.getElementById('zoomimg');
+const zoomContainer = document.getElementById('zoomimage');
+
+zoomContainer.addEventListener('mousemove', function (e) {
+    const { offsetX, offsetY } = e;
+    const { offsetWidth, offsetHeight } = zoomContainer;
+    
+    const xPos = (offsetX / offsetWidth) * 100; // Porcentaje de la posición X
+    const yPos = (offsetY / offsetHeight) * 100; // Porcentaje de la posición Y
+
+    zoomImage.style.transformOrigin = `${xPos}% ${yPos}%`;
+});
+
+zoomContainer.addEventListener('mouseenter', function () {
+    zoomImage.style.transition = 'transform 0.5s ease';
+    zoomImage.style.transform = 'scale(3)'; // Cambia el nivel de zoom
+});
+
+zoomContainer.addEventListener('mouseleave', function () {
+    zoomImage.style.transform = 'scale(1)'; // Regresa al tamaño original
+});

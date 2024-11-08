@@ -58,11 +58,11 @@
             @endforeach
         </div>
 
-        {{-- Tarjeta de categoria Autos --}}
+        {{-- Tarjeta de categoria Autos y motos --}}
         <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
             <h2 class="text-2xl font-bold mb-4">Autos</h2>
             @foreach ($locales as $local_tonala)
-                @if($local_tonala->categoria == 'autos')
+                @if($local_tonala->categoria == 'autos y motos')
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex mb-4 mt-2">
                             <span class="text-gray-600"># local {{$local_tonala->local}}</span>
@@ -81,34 +81,11 @@
             @endforeach
         </div>
 
-        {{-- Tarjeta de categoria Ropa, calzado y accesorios --}}
+        {{-- Tarjeta de categoria Moda --}}
         <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
-            <h2 class="text-2xl font-bold mb-4">Ropa, calzado y accesorios</h2>
+            <h2 class="text-2xl font-bold mb-4">Moda</h2>
             @foreach ($locales as $local_tonala)
-                @if($local_tonala->categoria == 'ropa, calzado y accesorios')
-                    <div class="flex justify-between items-center mb-4">
-                        <div class="flex mb-4 mt-2">
-                            <span class="text-gray-600"># local {{$local_tonala->local}}</span>
-                            <h3 class="text-sm font-bold ml-2 mt-1"> {{$local_tonala->nombre}}</h3>
-                        </div>
-                        <div class="flex justify-end space-x-4">
-                            <a class="bg-blue-200 hover:bg-blue-400 px-2 py-1 rounded-md font-bold" href="{{ route('local_tonala.edit', $local_tonala) }}">Editar</a>
-                            <form action="{{ route('local_tonala.destroy', $local_tonala) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="bg-red-200 hover:bg-red-400 px-2 py-1 rounded-md font-bold" type="submit">Eliminar</button>
-                            </form>
-                        </div>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    
-        {{-- Tarjeta de categoria Hogar --}}
-        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
-            <h2 class="text-2xl font-bold mb-4">Hogar</h2>
-            @foreach ($locales as $local_tonala)
-                @if($local_tonala->categoria == 'hogar')
+                @if($local_tonala->categoria == 'moda')
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex mb-4 mt-2">
                             <span class="text-gray-600"># local {{$local_tonala->local}}</span>
@@ -173,11 +150,80 @@
             @endforeach
         </div>
 
+        {{-- Tarjeta de categoria Departamental --}}
+        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
+            <h2 class="text-2xl font-bold mb-4">Entretenimiento</h2>
+            @foreach ($locales as $local_tonala)
+                @if($local_tonala->categoria == 'departamental')
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex mb-4 mt-2">
+                            <span class="text-gray-600"># local {{$local_tonala->local}}</span>
+                            <h3 class="text-sm font-bold ml-2 mt-1"> {{$local_tonala->nombre}}</h3>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <a class="bg-blue-200 hover:bg-blue-400 px-2 py-1 rounded-md font-bold" href="{{ route('local_tonala.edit', $local_tonala) }}">Editar</a>
+                            <form action="{{ route('local_tonala.destroy', $local_tonala) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="bg-red-200 hover:bg-red-400 px-2 py-1 rounded-md font-bold" type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+
+        {{-- Tarjeta de categoria Salud y belleza --}}
+        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
+            <h2 class="text-2xl font-bold mb-4">Salud y belleza</h2>
+            @foreach ($locales as $local_tonala)
+                @if($local_tonala->categoria == 'salud y belleza')
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex mb-4 mt-2">
+                            <span class="text-gray-600"># local {{$local_tonala->local}}</span>
+                            <h3 class="text-sm font-bold ml-2 mt-1"> {{$local_tonala->nombre}}</h3>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <a class="bg-blue-200 hover:bg-blue-400 px-2 py-1 rounded-md font-bold" href="{{ route('local_tonala.edit', $local_tonala) }}">Editar</a>
+                            <form action="{{ route('local_tonala.destroy', $local_tonala) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="bg-red-200 hover:bg-red-400 px-2 py-1 rounded-md font-bold" type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+
+        {{-- Tarjeta de categoria Otros --}}
+        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
+            <h2 class="text-2xl font-bold mb-4">Otros</h2>
+            @foreach ($locales as $local_tonala)
+                @if($local_tonala->categoria == 'otros')
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex mb-4 mt-2">
+                            <span class="text-gray-600"># local {{$local_tonala->local}}</span>
+                            <h3 class="text-sm font-bold ml-2 mt-1"> {{$local_tonala->nombre}}</h3>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <a class="bg-blue-200 hover:bg-blue-400 px-2 py-1 rounded-md font-bold" href="{{ route('local_tonala.edit', $local_tonala) }}">Editar</a>
+                            <form action="{{ route('local_tonala.destroy', $local_tonala) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="bg-red-200 hover:bg-red-400 px-2 py-1 rounded-md font-bold" type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+
         {{-- Tarjeta de categoria Locales disponibles --}}
         <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
             <h2 class="text-2xl font-bold mb-4">Locales disponibles</h2>
             @foreach ($locales as $local_tonala)
-                @if($local_tonala->categoria == 'locales dispinibles')
+                @if($local_tonala->categoria == 'locales disponibles')
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex mb-4 mt-2">
                             <span class="text-gray-600"># local {{$local_tonala->local}}</span>

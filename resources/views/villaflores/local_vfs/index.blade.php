@@ -58,11 +58,11 @@
             @endforeach
         </div>
 
-        {{-- Tarjeta de categoria Autos --}}
+        {{-- Tarjeta de categoria Autos y motos--}}
         <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
-            <h2 class="text-2xl font-bold mb-4">Autos</h2>
+            <h2 class="text-2xl font-bold mb-4">Autos y motos</h2>
             @foreach ($locales as $local_vf)
-                @if($local_vf->categoria == 'autos')
+                @if($local_vf->categoria == 'autos y motos')
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex mb-4 mt-2">
                             <span class="text-gray-600"># local {{$local_vf->local}}</span>
@@ -81,11 +81,11 @@
             @endforeach
         </div>
 
-        {{-- Tarjeta de categoria Ropa, calzado y accesorios --}}
+        {{-- Tarjeta de moda --}}
         <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
-            <h2 class="text-2xl font-bold mb-4">Ropa, calzado y accesorios</h2>
+            <h2 class="text-2xl font-bold mb-4">Moda</h2>
             @foreach ($locales as $local_vf)
-                @if($local_vf->categoria == 'ropa, calzado y accesorios')
+                @if($local_vf->categoria == 'moda')
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex mb-4 mt-2">
                             <span class="text-gray-600"># local {{$local_vf->local}}</span>
@@ -150,6 +150,52 @@
             @endforeach
         </div>
 
+        {{-- Tarjeta de categoria Departamental --}}
+        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
+            <h2 class="text-2xl font-bold mb-4">Departamental</h2>
+            @foreach ($locales as $local_vf)
+                @if($local_vf->categoria == 'departamental')
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex mb-4 mt-2">
+                            <span class="text-gray-600"># local {{$local_vf->local}}</span>
+                            <h3 class="text-sm font-bold ml-2 mt-1"> {{$local_vf->nombre}}</h3>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <a class="bg-blue-200 hover:bg-blue-400 px-2 py-1 rounded-md font-bold" href="{{ route('local_vfs.edit', $local_vf) }}">Editar</a>
+                            <form action="{{ route('local_vfs.destroy', $local_vf) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="bg-red-200 hover:bg-red-400 px-2 py-1 rounded-md font-bold" type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+
+        {{-- Tarjeta de categoria Otros --}}
+        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
+            <h2 class="text-2xl font-bold mb-4">Otros</h2>
+            @foreach ($locales as $local_vf)
+                @if($local_vf->categoria == 'otros')
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex mb-4 mt-2">
+                            <span class="text-gray-600"># local {{$local_vf->local}}</span>
+                            <h3 class="text-sm font-bold ml-2 mt-1"> {{$local_vf->nombre}}</h3>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <a class="bg-blue-200 hover:bg-blue-400 px-2 py-1 rounded-md font-bold" href="{{ route('local_vfs.edit', $local_vf) }}">Editar</a>
+                            <form action="{{ route('local_vfs.destroy', $local_vf) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="bg-red-200 hover:bg-red-400 px-2 py-1 rounded-md font-bold" type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+        
         {{-- Tarjeta de categoria Locales disponibles --}}
         <div class="bg-white shadow-md rounded-lg p-6 flex flex-col h-full">
             <h2 class="text-2xl font-bold mb-4">Locales disponibles</h2>

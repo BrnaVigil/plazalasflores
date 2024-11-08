@@ -12,7 +12,7 @@ class LocaltonalaController extends Controller
      */
     public function index()
     {
-        $locales = localtonala::orderBy('id', 'desc')->paginate();
+        $locales = localtonala::orderBy('id', 'desc')->get();
         return view ('tonala.local_tonala.index', compact('locales'));
     }
 

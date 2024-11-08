@@ -12,7 +12,7 @@ class LocalvillafloresController extends Controller
      */
     public function index()
     {
-        $locales = localvillaflores::orderBy('id', 'desc')->paginate();
+        $locales = localvillaflores::orderBy('id', 'desc')->get();
         return view ('villaflores.local_vfs.index', compact('locales'));
     }
 

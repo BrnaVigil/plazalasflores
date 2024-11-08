@@ -15,10 +15,13 @@
                     <option value="" disabled {{ old('categoria', $local->categoria) == '' ? 'selected' : '' }}>Selecciona una categoría</option>
                     <option value="alimentos" {{ old('categoria', $local->categoria) == 'alimentos' ? 'selected' : '' }}>Alimentos</option>
                     <option value="autoservicio" {{ old('categoria', $local->categoria) == 'autoservicio' ? 'selected' : '' }}>Autoservicio</option>
-                    <option value="autos" {{ old('categoria', $local->categoria) == 'autos' ? 'selected' : '' }}>Autos</option>
-                    <option value="ropa, calzado y accesorios" {{ old('categoria', $local->categoria) == 'ropa, calzado y accesorios' ? 'selected' : '' }}>Ropa, calzado y accesorios</option>
+                    <option value="autos y motos" {{ old('categoria', $local->categoria) == 'autos y motos' ? 'selected' : '' }}>Autos y motos</option>
+                    <option value="moda" {{ old('categoria', $local->categoria) == 'moda' ? 'selected' : '' }}>Moda</option>
                     <option value="tecnologia" {{ old('categoria', $local->categoria) == 'tecnologia' ? 'selected' : '' }}>Tecnologia</option>
                     <option value="entretenimiento" {{ old('categoria', $local->categoria) == 'entretenimiento' ? 'selected' : '' }}>Entretenimiento</option>
+                    <option value="salud y belleza" {{ old('categoria', $local->categoria) == 'salud y belleza' ? 'selected' : '' }}>Salud y belleza</option>
+                    <option value="departamental" {{ old('categoria', $local->categoria) == 'departamental' ? 'selected' : '' }}>Departamental</option>
+                    <option value="otros" {{ old('categoria', $local->categoria) == 'otros' ? 'selected' : '' }}>Otros</option>
                     <option value="locales dispinibles" {{ old('categoria', $local->categoria) == 'locales dispinibles' ? 'selected' : '' }}>Locales disponibles</option>
                 </select>
                 <div class="invalid-feedback font-bold">

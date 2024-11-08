@@ -1,7 +1,7 @@
 /* ---------------------------bg menu transparente ----------------------------------------------- */
 
 .bg-transparent-scroll {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(49, 90, 37, 0.651);
     transition: background-color 0.3s ease;
 }
 
@@ -46,13 +46,6 @@
     100% { transform: translateX(100%); }
 }
 
-.bg-open-menu {
-    background-image: url('../svg/text-left.svg');
-}
-
-.bg-close-menu {
-    background-image: url('../svg/x-lg.svg');
-}
 
 /* -------------------------------------fondo----------------------------------- */
 
@@ -114,7 +107,7 @@ to {
 
 .accordion .contentbx {
     position: relative;
-    margin: 10px 20px;
+    /* margin: 10px 20px; */
     transition: height 0.3s ease, padding 0.3s ease;
 }
 
@@ -142,13 +135,37 @@ to {
 .accordion .contentbx .content {
     position: relative;
     background: #fff;
-    height: 0;
+    max-height: 0;
     overflow: hidden;
-    transition: 0.5s;
-    overflow-y: auto;
-    margin-top: 10px;
+    transition: max-height 0.5s ease;
 }
 
 .accordion .contentbx.active .content{
-    height: 150px;
+    max-height: 500px;
+}
+
+/*-------------------------- Zoom en la imagen ------------------------------------- */
+#zoomimage {
+    overflow: hidden; /* Esconde cualquier parte de la imagen que se salga del contenedor */
+    position: relative; /* Necesario para el posicionamiento absoluto del zoom */
+}
+
+#zoomimg {
+    transition: transform 0.5s ease; /* Suaviza la transición del zoom */
+    width: 100%; /* Asegúrate de que la imagen sea responsive */
+}
+
+#zoomimage:hover #zoomimg {
+    transform: scale(3); /* Cambia el valor según el nivel de zoom que desees */
+}
+
+.content {
+    position: absolute;
+    z-index: 100; /* Asegúrate de que este valor sea mayor que otros elementos */
+    transition: opacity 0.3s ease;
+}
+
+#zoomimage {
+    position: relative; /* Para que el z-index tenga efecto */
+    z-index: 10; /* Valor menor que el de .content */
 }

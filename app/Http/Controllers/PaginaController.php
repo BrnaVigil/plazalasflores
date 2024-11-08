@@ -50,7 +50,7 @@ class PaginaController extends Controller
     }
     public function comitan (){
 
-        $locales = localcomitan::paginate();
+        $locales = localcomitan::get();
         $fondos = fondocomitan::paginate();
         $socios = socioscomitan::paginate();
         $interiores = interiorescomitan::paginate();
@@ -61,7 +61,7 @@ class PaginaController extends Controller
 
         $fondos = fondotonala::paginate();
         $interiores = interiorestonala::paginate();
-        $locales = localtonala::paginate();
+        $locales = localtonala::get();
         $socios = sociostonala::paginate();
 
         return view ('tonala', compact('fondos','interiores','locales','socios'));
@@ -71,7 +71,7 @@ class PaginaController extends Controller
         $fondos = fondovillaflores::paginate();
         $socios = sociosvillaflores::paginate();
         $interiores = interioresvillaflores::paginate();
-        $locales = localvillaflores::paginate();
+        $locales = localvillaflores::get();
 
         return view ('villaflores', compact('fondos','socios','interiores','locales'));
     }
@@ -79,7 +79,7 @@ class PaginaController extends Controller
 
         $interiores = interiorespinotepa::paginate();
         $socios = sociospinotepa::paginate();
-        $locales = localpinotepa::paginate();
+        $locales = localpinotepa::get();
         $fondos = fondopinotepa::paginate();
 
         return view ('pinotepa', compact('interiores','socios','locales','fondos'));
@@ -89,16 +89,16 @@ class PaginaController extends Controller
         $interiores = interioresviaplaza::paginate();
         $fondos = fondoviaplaza::paginate();
         $socios = sociosviaplaza::paginate();
-        $locales = localviaplaza::paginate();
+        $locales = localviaplaza::get();
         
-        return view ('viaplaza', compact('fondos','interiores','socios','locales'));
+        return view ('ciudadhidalgo', compact('fondos','interiores','socios','locales'));
     }
     public function palenque (){
 
         $fondos = fondopalenque::paginate();
         $interiores = interiorespalenque::paginate();
         $socios = sociospalenque::paginate();
-        $locales = localpalenque::paginate();
+        $locales = localpalenque::get();
 
         return view ('palenque', compact('fondos','interiores','socios','locales'));
     }

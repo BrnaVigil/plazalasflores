@@ -2,43 +2,86 @@
     
     <!-- Header -->
     <header>
-        @include('nav')
+        <nav id="navbar" class="bg-green-pf fixed w-full z-50">
+            <div class="container mx-auto flex items-center justify-between ">
+                <!-- Logo -->
+                <div class="logo my-2">
+                    <a href="/">
+                        <img src="/img/logo-1.png" alt="Logo" class="h-20">
+                    </a>
+                </div>
+                
+        
+                {{-- menu telefono --}}
+                <ul class="sidebar font-bold menu sidebar fixed top-0 right-0 h-screen w-[250px] z-[999] backdrop-blur-md bg-green-900/50 shadow-xl hidden flex-col items-start"> 
+                    <li class="absolute right-3 top-7">
+                        <button onclick="hideSidebar()" class="focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed">
+                                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                            </svg>
+                        </button>
+                    </li>                    
+                    <li class="mt-20 ml-6 text-white"><a href="/">Inicio</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/comitan">Comitán</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/tonala">Tonalá</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/villaflores">Villaflores</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/pinotepa">Pinotepa</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/ciudadhidalgo">Ciudad Hidalgo</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/palenque">Palenque</a></li>
+                    <li class="mt-6 ml-6 text-white"><a id="facebook-link-tel" href="#" class="block py-2 mr-20 md:py-0 hover:text-gray-300"><i class="bi bi-facebook text-3xl hover:text-blue-800"></i></a></li>
+                    <li class="mt-6 ml-6 text-white"><a id="instagram-link-tel" href="#" class="block py-2 mr-20 md:py-0 hover:text-gray-300"><i class="bi bi-instagram text-3xl hover:text-pink-800"></i></a></li>
+                </ul>  
+        
+                <!-- Menú de Computadora -->
+                <ul id="menu" class="menu flex md:flex-row md:items-center md:space-x-6 text-white font-normal">
+                    <!-- Elementos de menú visibles solo en pantallas medianas y grandes -->
+                    <li class="hidden md:block"><a href="/" class="block hover:text-gray-300 font-extrabold underline">Inicio</a></li>
+                    <li class="hidden md:block"><a href="/comitan" class="block hover:text-gray-300 hover:underline">Comitán</a></li>
+                    <li class="hidden md:block"><a href="/tonala" class="block hover:text-gray-300 hover:underline">Tonalá</a></li>
+                    <li class="hidden md:block"><a href="/villaflores" class="block hover:text-gray-300 hover:underline">Villaflores</a></li>
+                    <li class="hidden md:block"><a href="/pinotepa" class="block hover:text-gray-300 hover:underline">Pinotepa</a></li>
+                    <li class="hidden md:block"><a href="/ciudadhidalgo" class="block hover:text-gray-300 hover:underline">Ciudad Hidalgo</a></li>
+                    <li class="hidden md:block"><a href="/palenque" class="block hover:text-gray-300 hover:underline">Palenque</a></li>
+                    <li class="hidden md:block"><a id="facebook-link" href="" class="block hover:text-gray-300 ml-32"><i class="hidden bi bi-facebook text-3xl hover:text-blue-800"></i></a></li>
+                    <li class="hidden md:block"><a id="instagram-link" href="" class="block hover:text-gray-300"><i class="hidden bi bi-instagram text-3xl hover:text-pink-800"></i></a></li>
+                    
+                    <!-- Icono de sidebar visible solo en pantallas pequeñas -->
+                    <li class="block md:hidden">
+                        <button onclick="showSidebar()" class="focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed">
+                                <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                            </svg>
+                        </button>
+                    </li>                    
+                </ul>
+        
+            </div>
+        </nav>
     
         {{-- imagen de fondo --}}
         <div class="flex items-center">
-            <div class="slider-cont-fondo w-full">
-                <div class="slider-fondo h-full" id="slider-fondo">
+            <div class="slider-cont-fondo w-full relative"> <!-- Añadido relative para posicionar elementos absolutos -->
+                <div class="slider-fondo h-full mt-24" id="slider-fondo">
                     @foreach ($inicio as $index)
                         <div class="slide-fondo">
-                            <img loading="lazy" class="w-full h-screen object-cover" src="{{ asset('storage/'.$index->imagen) }}" alt="Image 2">
+                            <img loading="lazy" class="w-full h-screen object-cover" src="{{ asset('/storage/'.$index->imagen) }}" alt="Image 2">
                         </div>
                     @endforeach
                 </div>
-                {{-- texto y botones de fondo --}}
-                <div class="absolute inset-0 flex flex-col items-center justify-center">
-                    <div class="mt-40">
-                        <h1 data-aos="zoom-in" class="text-white text-4xl font-bold -mt-40">Plaza las flores</h1>
-                    </div>
+                {{-- Fondo gris transparente --}}
+                <div class="absolute inset-0 bg-gray-800 bg-opacity-50"></div> <!-- Fondo gris transparente -->
+        
+                {{-- Texto y botones de fondo --}}
+                <div class="absolute inset-0 flex flex-col text-center items-center justify-center z-10"> <!-- Añadido z-10 para asegurar que el texto esté encima -->
                     <div>
                         <h1 data-aos="zoom-in" class="text-3xl md:text-7xl font-bold mb-6 text-gray-50 transition duration-500 p-2 rounded-md text-shadow-lg">
-                            Tu Mejor Oportunidad de <br><strong id="changingText">Crecimiento</strong>
+                            <br><strong id="changingText-tonala-vf">Las mejores marcas en un <br> solo lugar</strong>
                         </h1>
-                    </div>
-                    <div data-aos="fade-up" data-aos-duration="1000" class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
-                        <div class="flex items-center justify-center">
-                            <a class="bg-lime-400 hover:bg-lime-200/50 text-white font-bold px-6 py-3 rounded-full text-center w-full flex items-center justify-center" href="">
-                                MAS INFORMES <i class="bi bi-file-earmark-richtext-fill text-2xl ml-2"></i>
-                            </a>
-                        </div>
-                        <div class="flex items-center justify-center">
-                            <a class="bg-white hover:bg-black font-bold px-6 py-3 rounded-full text-center w-full flex items-center justify-center" href="">
-                                RENTAR UN LOCAL <i class="bi bi-building-fill-add text-2xl ml-2"></i>
-                            </a>
-                        </div>
-                    </div>                    
+                    </div>             
                 </div>                
             </div>
         </div>
+        
     </header>
 
     <!-- Plazas comerciales, socios comerciales, visitas al mes -->
@@ -46,11 +89,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 md:p-24 gap-4 mb-10 mx-5">
             <div data-aos="fade-up-right" class="text-center grid grid-cols-2 gap-4">
                 <div class="mt-4">
-                    <img src="/img/carrito.png" class="h-28 md:h-48 mx-auto">
+                    <img src="/img/centrosComerciales.png" class="h-28 md:h-48 mx-auto">
                 </div>
                 <div class="flex flex-col justify-center">
                     <h1 class="text-4xl md:text-6xl font-bold">6</h1>
-                    <p class="text-xl md:text-3xl text-green-500 font-bold">Plazas comerciales</p>
+                    <p class="text-xl md:text-3xl text-green-custon font-bold">Centros comerciales</p>
                 </div>
             </div>        
             <div data-aos="fade-up-left" class="text-center grid grid-cols-2">
@@ -58,26 +101,26 @@
                     <img src="/img/saludo.png" class="h-28 md:h-48">
                 </div>
                 <div class="flex flex-col justify-center">
-                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-500">+</strong>130</h1>
-                    <p class="text-xl md:text-3xl text-green-500 font-bold">Socios comerciales</p>
+                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-custon">+</strong>200</h1>
+                    <p class="text-xl md:text-3xl text-green-custon font-bold">Socios comerciales</p>
                 </div>
             </div>
             <div data-aos="fade-up-right" class="text-center grid grid-cols-2">
                 <div>
-                    <img src="/img/caminando.png" class="h-28 md:h-48">
+                    <img src="/img/escuadra.png" class="h-28 md:h-48">
                 </div>
                 <div class="flex flex-col justify-center">
-                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-500">+</strong>500 mil</h1>
-                    <p class="text-xl md:text-3xl text-green-500 font-bold">Visitas al mes</p>
+                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-custon">+</strong>500 mil</h1>
+                    <p class="text-xl md:text-3xl text-green-custon font-bold">Invitados al mes</p>
                 </div>
             </div>
             <div data-aos="fade-up-left" class="text-center grid grid-cols-2">
                 <div>
-                    <img src="/img/escuadra.png" class="h-28 md:h-48">
+                    <img src="/img/areaconstruida.png" class="h-28 md:h-48">
                 </div>
                 <div class="flex flex-col justify-center text-center">
-                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-500">+</strong>166 mil</h1>
-                    <p class="text-xl md:text-3xl text-green-500 font-bold">Metros cuadrados</p>
+                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-custon">+</strong>170 mil</h1>
+                    <p class="text-xl md:text-3xl text-green-custon font-bold">Metros cuadrados</p>
                 </div>
             </div>
         </div>
@@ -107,8 +150,8 @@
             <!-- Columna de Texto -->
             <div data-aos="fade-left" class="relative bg-white border-2 border-gray-300 rounded-md shadow-lg p-6 md:top-20 md:-left-20 -left-10 -top-24 text-center">
                 <i class="bi bi-caret-down-fill text-3xl text-center"></i>
-                <p class="md:text-2xl text-base leading-relaxed font-bold">
-                    Los espacios interiores fueron creados para proponer una larga estadía del invitado. El concepto de centro comercial cerrado y climatizado, en el que se puede gozar de un ambiente agradable mientras se visitan los autoservicios, cines, tiendas departamentales y una amplia variedad de restaurantes en el área gourmet.
+                <p class="md:text-2xl text-justify leading-relaxed font-bold">
+                    Estamos enfocados en el diseño, construcción y comercialización de inmuebles en zonas estratégicas de la región donde vamos de la mano con socios comerciales nacionales e internacionales que le apuestan al desarrollo de nuestro país. 
                 </p>
             </div>
         </div>
@@ -181,17 +224,10 @@
 
     {{-- Se parte de nosotros --}}
     <section class="overflow-x-hidden">
-        <div class="grid grid-cols-1 md:grid-cols-2 md:p-10 gap-4 my-10" style="background-image: url(/img/fondo-colores.jpg)">
+        <div class="grid grid-cols-1 md:p-10 gap-4 h-40" style="background-image: url(/img/fondo-colores.jpg);">
             <div>
-                <div>
-                    <p data-aos="zoom-in" class="text-center text-white font-bold text-5xl md:text-6xl mt-12">SE PARTE DE NOSOTROS</p>
-                </div>
-            </div>
-            <div>
-                <div data-aos="zoom-out" class="py-10 md:p-20 text-center">
-                    <a href="#" class="bg-lime-500 hover:bg-green-700 text-black font-bold rounded-full px-4 py-2 mx-auto text-center">
-                        Contactanos <i class="bi bi-telephone-forward-fill ml-4"></i>
-                    </a>
+                <div class="text-center text-white font-bold text-5xl md:text-6xl my-48">
+                    SE PARTE DE NOSOTROS
                 </div>
             </div>
         </div>
@@ -205,7 +241,7 @@
                     <img src="/img/mision.png" class="h-28 md:h-16 mx-auto">
                     <div>
                         <h1 class="text-center font-bold text-3xl">Misión</h1>
-                        <p class="text-center font-medium text-xl md:text-2xl mt-4">" Ser un espacio de encuentro para la comunidad, que brinde las mejores opciones de compras, servicios y entretenimiento, a través de instalaciones cómodas, limpias y seguras. "</p>
+                        <p class="text-center font-medium text-xl md:text-2xl mt-4">Ser un espacio de encuentro para la comunidad, que brinde las mejores opciones de compras, servicios y entretenimiento, a través de instalaciones cómodas, limpias y seguras.</p>
                     </div>
                 </div>
             </div>
@@ -215,7 +251,7 @@
                     <img src="/img/vision.png" class="h-28 md:h-16 mx-auto">
                     <div>
                         <h1 class="text-center font-bold text-3xl">Visión</h1>
-                        <p class="text-center font-medium text-xl md:text-2xl mt-4">" Consolidarnos como el principal destino comercial de la comunidad con la participación de las mejores marcas nacionales e internacionales, generando valor a nuestros socios comerciales. "</p>
+                        <p class="text-center font-medium text-xl md:text-2xl mt-4">Consolidarnos como el principal destino comercial de la comunidad con la participación de las mejores marcas nacionales e internacionales, generando valor a nuestros socios comerciales.</p>
                     </div>                
                 </div>
             </div>
@@ -226,11 +262,11 @@
                     <div>
                         <p class="text-center font-bold text-2xl md:text-3xl mt-4">Valores</p>
                         <ul class="font-medium text-xl md:text-3xl ml-10">
-                            <li class="mt-2"><i class="bi bi-check-circle-fill text-green-700 mr-4"></i>Honestidad</li>
-                            <li class="mt-2"><i class="bi bi-check-circle-fill text-green-700 mr-4"></i>Compromiso</li>
-                            <li class="mt-2"><i class="bi bi-check-circle-fill text-green-700 mr-4"></i>Creatividad</li>
-                            <li class="mt-2"><i class="bi bi-check-circle-fill text-green-700 mr-4"></i>Servicio al cliente</li>
-                            <li class="mt-2"><i class="bi bi-check-circle-fill text-green-700 mr-4"></i>Trabajo en equipo</li>
+                            <li class="mt-2"><i class="bi bi-record-fill text-sm mr-4 -mt-5"></i>Honestidad</li>
+                            <li class="mt-2"><i class="bi bi-record-fill text-sm mr-4 -mt-5"></i>Compromiso</li>
+                            <li class="mt-2"><i class="bi bi-record-fill text-sm mr-4 -mt-5"></i>Creatividad</li>
+                            <li class="mt-2"><i class="bi bi-record-fill text-sm mr-4 -mt-5"></i>Servicio al cliente</li>
+                            <li class="mt-2"><i class="bi bi-record-fill text-sm mr-4 -mt-5"></i>Trabajo en equipo</li>
                         </ul>
                     </div>
                 </div>
@@ -242,8 +278,10 @@
     <section class="overflow-x-hidden">
         <div data-aos="fade-down-left" class="bg-white dark:bg-gray-800 w-full">
             <div class="relative overflow-hidden rounded-lg">
-                <h3 class="text-center font-bold pb-20 text-4xl">Conoce las ubicaciones de nuestras Plazas Comerciales</h3>
-                <iframe class="w-full md:px-32 h-96" src="https://www.google.com/maps/d/u/0/embed?mid=1QUOqiXy1oeobApyGzAxT5VWJB8-26ZY&ehbc=2E312F&noprof=1"></iframe>
+                <h3 class="text-center font-bold pb-20 text-4xl">Conoce las ubicaciones de nuestros Centros Comerciales.</h3>
+                <div class="md:px-10">
+                    <iframe class="w-full h-96" src="https://www.google.com/maps/d/u/0/embed?mid=1MzxK1T3Q2ZroOwE4a-vRpxqntBD6nVs&ehbc=2E312F&noprof=1"></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -253,40 +291,17 @@
 
     {{-- Fomulario y contacto --}}
     <section class="overflow-x-hidden">
-        <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 ">
+        <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2">
 
-            <div class="p-10">
-                <h1 class="text-3xl font-bold text-center">Para mas información contáctanos</h1>
-                <form class="max-w-md mx-auto">
-                    <div class="relative mt-5">
-                        <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-lime-500 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-                        <label for="floating_outlined" class="absolute text-lg text-gray-900 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nombre y apellido</label>
-                    </div>
-                    <div class="relative mt-5">
-                        <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-lime-500 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-                        <label for="floating_outlined" class="absolute text-lg text-gray-900 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Correo electrónico</label>
-                    </div>
-                    <div class="relative mt-5">
-                        <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-lime-500 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-                        <label for="floating_outlined" class="absolute text-lg text-gray-900 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Teléfono</label>
-                    </div>
-                    <div class="relative mt-5">
-                        <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-lime-500 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-                        <label for="floating_outlined" class="absolute text-lg text-gray-900 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Mensaje</label>
-                    </div>
-                    <button type="submit" class="mt-5 text-white font-bold bg-lime-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">ENVIAR</button>
-                </form>
-            </div>
+            @include('form')
 
-            <div class="border-gray-300 text-center mt-20 mb-10">
-                <p class="text-xl px-7 md:px-32 my-6">Envíanos un correo electrónico con tus datos a la siguiente dirección:</p>
-                <p class="text-2xl text-lime-500 font-bold mb-4">info@plazalasflores.com.mx</p>
+            <div class="border-gray-300 text-center mt-20 mb-10 my-auto">
 
                 <div class="border-2 mx-40 mb-6 border-gray-300"></div>
 
-                <i class="bi bi-whatsapp text-black-900 text-5xl font-bold"> Escribenos</i>
+                <i class="bi bi-whatsapp text-black-900 text-5xl font-bold"> Escríbenos</i>
                 <p class="text-xl px-8 md:px-32 my-6">Ponte en contacto con nosotros por medio de nuestro WhatsApp</p>
-                <p class="text-3xl text-lime-500 font-bold">558 017 33 35</p>
+                <p class="text-3xl text-lime-500 font-bold">558 017 3335</p>
             </div>
         </div>
     </section>

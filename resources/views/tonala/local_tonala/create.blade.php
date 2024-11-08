@@ -14,12 +14,14 @@
                     <option value="" disabled selected>Selecciona una categoría</option>
                     <option value="alimentos">Alimentos</option>
                     <option value="autoservicio">Autoservicio</option>
-                    <option value="autos">Autos</option>
-                    <option value="ropa, calzado y accesorios">Ropa, calzado y accesorios</option>
-                    <option value="hogar">Hogar</option>
+                    <option value="autos y motos">Autos y motos</option>
+                    <option value="moda">Moda</option>
                     <option value="tecnologia">Tecnologia</option>
                     <option value="entretenimiento">Entretenimiento</option>
-                    <option value="locales dispinibles">Locales disponibles</option>
+                    <option value="departamental">departamental</option>
+                    <option value="salud y belleza">Salud y belleza</option>
+                    <option value="otros">Otros</option>
+                    <option value="locales disponibles">Locales disponibles</option>
                 </select>
                 <div class="invalid-feedback font-bold">
                     Este campo es requerido                

@@ -1,11 +1,64 @@
 <x-guest-layout>
     <!-- Header -->
     <header class="overflow-x-hidden">
-        @include('nav')
+        <nav id="navbar" class="bg-green-pf fixed w-full z-50">
+            <div class="container mx-auto flex items-center justify-between ">
+                <!-- Logo -->
+                <div class="logo my-2">
+                    <a href="/">
+                        <img src="/img/COMITÁN.png" alt="Logo" class="h-20">
+                    </a>
+                </div>
+                
+        
+                {{-- menu telefono --}}
+                <ul class="sidebar menu sidebar fixed top-0 right-0 h-screen w-[250px] z-[999] backdrop-blur-md bg-gray-900/70 shadow-xl hidden flex-col items-start"> 
+                    <li class="absolute right-3 top-7">
+                        <button onclick="hideSidebar()" class="focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed">
+                                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                            </svg>
+                        </button>
+                    </li>  
+                    <li class="mt-10 ml-6 text-white"><a href="/">Inicio</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/comitan">Comitán</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/tonala">Tonalá</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/villaflores">Villaflores</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/pinotepa">Pinotepa</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/ciudadhidalgo">Ciudad Hidalgo</a></li>
+                    <li class="mt-6 ml-6 text-white"><a href="/palenque">Palenque</a></li>
+                    <li class="mt-6 ml-6 text-white"><a id="facebook-link-tel" href="#" class="block py-2 mr-20 md:py-0 hover:text-gray-300"><i class="bi bi-facebook text-3xl hover:text-blue-800"></i></a></li>
+                    <li class="mt-6 ml-6 text-white"><a id="instagram-link-tel" href="#" class="block py-2 mr-20 md:py-0 hover:text-gray-300"><i class="bi bi-instagram text-3xl hover:text-pink-800"></i></a></li>
+                </ul>  
+        
+                <!-- Menú de Computadora -->
+                <ul id="menu" class="menu flex md:flex-row md:items-center md:space-x-6 text-white font-normal">
+                    <!-- Elementos de menú visibles solo en pantallas medianas y grandes -->
+                    <li class="hidden md:block"><a href="/" class="block hover:text-gray-300 hover:underline">Inicio</a></li>
+                    <li class="hidden md:block"><a href="/comitan" class="block hover:text-gray-300 font-extrabold underline">Comitán</a></li>
+                    <li class="hidden md:block"><a href="/tonala" class="block hover:text-gray-300 hover:underline">Tonalá</a></li>
+                    <li class="hidden md:block"><a href="/villaflores" class="block hover:text-gray-300 hover:underline">Villaflores</a></li>
+                    <li class="hidden md:block"><a href="/pinotepa" class="block hover:text-gray-300 hover:underline">Pinotepa</a></li>
+                    <li class="hidden md:block"><a href="/ciudadhidalgo" class="block hover:text-gray-300 hover:underline">Ciudad Hidalgo</a></li>
+                    <li class="hidden md:block"><a href="/palenque" class="block hover:text-gray-300 hover:underline">Palenque</a></li>
+                    <li class="hidden md:block"><a id="facebook-link" href="https://www.facebook.com/iprosur" class="block hover:text-gray-300 ml-32"><i class="bi bi-facebook text-3xl hover:text-blue-800"></i></a></li>
+                    <li class="hidden md:block"><a id="instagram-link" href="https://www.instagram.com/" class="block hover:text-gray-300"><i class="bi bi-instagram text-3xl hover:text-pink-800"></i></a></li>
+                    
+                    <!-- Icono de sidebar visible solo en pantallas pequeñas -->
+                    <li class="block md:hidden">
+                        <button onclick="showSidebar()" class="focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed">
+                                <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                            </svg>
+                        </button>
+                    </li>                    
+                </ul>
+            </div>
+        </nav>
 
         {{-- imagen de fondo --}}
         <div class="flex items-center">
-            <div class="slider-cont-fondo w-full">
+            <div class="slider-cont-fondo w-full relative">
                 <div class="slider-fondo h-full" id="slider-fondo">
                     @foreach ($fondos as $fondo)
                         <div class="slide-fondo">
@@ -13,35 +66,14 @@
                         </div>
                     @endforeach
                 </div>
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div> <!-- Fondo gris transparente -->
                 {{-- texto y botones de fondo --}}
                 <div class="absolute inset-0 flex flex-col items-center justify-center">
-                    <div class="mt-40">
-                        <h1 data-aos="zoom-in" class="text-white text-4xl font-bold -mt-40">Comitán</h1>
-                    </div>
-                    <div>
+                    <div class="text-center">
                         <h1 data-aos="zoom-in" class="text-3xl md:text-7xl font-bold mb-6 text-gray-50 transition duration-500 p-2 rounded-md text-shadow-lg">
                             Calidad en <br><strong id="changingText-comitan">Infraestructura</strong>
                         </h1>
-
-                        {{-- Ejemplo para que el texto no se puerda en las imagenes de fondo --}}
-
-                        {{-- <h1 class="text-3xl md:text-6xl font-bold mb-6 text-gray-50 transition duration-500 p-2 rounded-md text-shadow-wide bg-black bg-opacity-50">
-                            Tu Mejor Oportunidad de <br><strong id="changingText">Crecimiento</strong>
-                        </h1> --}}
-
-                    </div>
-                    <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
-                        <div class="flex items-center justify-center">
-                            <a class="bg-lime-400 hover:bg-lime-200/50 text-white font-bold px-6 py-3 rounded-full text-center w-full flex items-center justify-center" href="#concepto">
-                                ¡CONOCENOS! <i class="bi bi-file-earmark-richtext-fill text-2xl ml-2"></i>
-                            </a>
-                        </div>
-                        <div class="flex items-center justify-center">
-                            <a class="bg-white hover:bg-white/20 font-bold px-6 py-3 rounded-full text-center w-full flex items-center justify-center" href="">
-                                RENTAR UN LOCAL <i class="bi bi-building-fill-add text-2xl ml-2"></i>
-                            </a>
-                        </div>
-                    </div>                    
+                    </div>              
                 </div>                
             </div>
         </div>
@@ -56,8 +88,8 @@
                     <img loading="lazy" src="/img/carrito.png" class="h-28 md:h-48 mx-auto">
                 </div>
                 <div class="flex flex-col justify-center">
-                    <h1 class="text-4xl md:text-6xl font-bold">42</h1>
-                    <p class="text-xl md:text-3xl text-green-500 font-bold">Locales</p>
+                    <h1 class="text-4xl md:text-6xl font-bold"><strong class="text-green-custon">+</strong>60</h1>
+                    <p class="text-xl md:text-3xl text-green-custon font-bold">Locales comerciales</p>
                 </div>
             </div>
 
@@ -66,8 +98,8 @@
                     <img loading="lazy" src="/img/estacionamiento.png" class="h-28 md:h-48">
                 </div>
                 <div class="flex flex-col justify-center">
-                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-500">+</strong>226</h1>
-                    <p class="text-xl md:text-3xl text-green-500 font-bold">Cajones de estacionamiento</p>
+                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-custon">+</strong>1000</h1>
+                    <p class="text-xl md:text-3xl text-green-custon font-bold">Cajones de estacionamiento</p>
                 </div>
             </div>
 
@@ -76,8 +108,8 @@
                     <img loading="lazy" src="/img/areaconstruida.png" class="h-28 md:h-48">
                 </div>
                 <div class="flex flex-col justify-center">
-                    <h1 class="text-3xl md:text-6xl font-bold">8,300<strong class="text-green-500 text-base"> m2</strong></h1>
-                    <p class="text-xl md:text-3xl text-green-500 font-bold">De construcción</p>
+                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-custon">+</strong>70<strong class="text-green-custon text-base">mil m2</strong></h1>
+                    <p class="text-xl md:text-3xl text-green-custon font-bold">De construcción</p>
                 </div>
             </div>
 
@@ -86,8 +118,8 @@
                     <img loading="lazy" src="/img/escuadra.png" class="h-28 md:h-48">
                 </div>
                 <div class="flex flex-col justify-center text-center">
-                    <h1 class="text-3xl md:text-6xl font-bold">18<strong class="text-green-500 text-base">mil m2</strong></h1>
-                    <p class="text-xl md:text-3xl text-green-500 font-bold">De terreno</p>
+                    <h1 class="text-3xl md:text-6xl font-bold"><strong class="text-green-custon">+</strong>300<strong class="text-green-custon text-base">mil</strong></h1>
+                    <p class="text-xl md:text-3xl text-green-custon font-bold">Visitas Mensuales</p>
                 </div>
             </div>
         </div>
@@ -99,18 +131,18 @@
             <h1 data-aos="zoom-in-left" class="text-5xl text-center font-bold pt-16 mb-20">NUESTRO CONCEPTO</h1>
             <div class="border-2 border-gray-300 mb-8 mx-20"></div>
             <p  data-aos="zoom-in-right" class="px-5 mb-5 text-base md:text-3xl mt-20 text-center">
-                Con un diseño vanguardista, amplios espacios y una ubicación estratégica, ofrece una de las mejores oportunidades de negocio del momento en Comitán.
+                Con un diseño vanguardista, amplios espacios y una ubicación estratégica ofrecemos la mejor oportunidad de negocio en Comitán y la región.
             </p>
             <p data-aos="zoom-in-left" class="px-5 mb-5 text-base md:text-3xl mt-20 text-center">
-                Hemos puesto especial cuidado en todos y cada uno de los detalles que conforman La Plaza. Su diseño arquitectónico permite que el Centro Comercial cuente con dos accesos principales que facilitan el ingreso a todos los locales y espacios en su interior.
+                Hemos puesto especial cuidado en los detalles de nuestro centro comercial. El diseño arquitectónico permite que Plaza Las Flores Comitán cuente con dos accesos principales que facilitan el recorrido de nuestros invitados en los espacios interiores. 
             </p>
             <div class="text-center grid grid-cols-1 md:grid-cols-2 md:px-80">
                 <div data-aos="zoom-in-left" class="my-10">
-                    <i class="bi bi-arrow-down-square text-4xl"></i>
+                    <img class="h-20 mx-auto" src="/img/Calidad Infraestructura.png" alt="">                    
                     <p class="mt-10 text-2xl">Calidad de infraestructura</p>
                 </div>
                 <div data-aos="zoom-in-right" class="my-10">
-                    <i class="bi bi-card-checklist text-4xl"></i>
+                    <img class="h-20 mx-auto" src="/img/Servicios.png" alt="">
                     <p class="mt-10 text-2xl">Variedad de servicios</p>
                 </div>
             </div>
@@ -133,13 +165,13 @@
                 </div>
             </div>
             <!-- Columna de Texto -->
-            <div data-aos="fade-left" class="relative bg-white border-2 border-gray-300 rounded-md shadow-lg p-6 md:top-20 md:-left-20 -left-10 -top-24">
+            <div data-aos="fade-left" class="relative bg-white border-2 border-gray-300 rounded-md shadow-lg p-6 md:top-20 md:-left-20 -left-10 -top-24 text-justify">
                 <h1 class="text-5xl font-bold text-center">ESPACIOS INTERIORES</h1>
                 <p class="text-base md:text-2xl mt-4 md:px-4">
-                    Fueron creados para proponer una larga estadía del cliente. El concepto de Centro Comercial cerrado y climatizado, en el que se puede gozar de un ambiente agradable mientras se visitan los autoservicios, cines, tiendas y una amplia variedad de restaurantes en el área gourmet.
+                    Cuidamos cada detalle para proponer a nuestros invitados largas estadías entre la variedad de marcas que conforman este centro comercial. Plaza Las Flores Comitán aperturó desde 2009 y se ha consolidado con el paso de los años en la región. 
                 </p>
                 <p class="text-base md:text-2xl mt-4 md:px-4">
-                    Plaza Las Flores Comitán es el Centro Comercial con mayor calidad en infraestructura y servicios de la región.
+                    El concepto de centro comercial cerrado y climatizado ofrece a nuestros invitados un ambiente agradable mientras visitan la variedad de marcas a lo largo de nuestro track comercial, donde hemos logrado una mezcla variada e interesante para los pobladores de la región de influencia de Plaza Las Flores Comitán. 
                 </p>
             </div>
         </div>
@@ -186,38 +218,34 @@
     <section class="overflow-x-hidden">
         <div id="seccion-destino" class="grid grid-cols-1 md:grid-cols-2">
             {{-- Acordion de lista de locales --}}
-            <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" class="max-w-2xl my-auto">
+            <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" class="my-auto mx-8 mt-4">
     
                 {{-- Acordion alimentos --}}
-                <div class="accordion">
+                <div class="accordion border-b border-gray-500">
                     <div class="contentbx">
                         <div class="label">
-                            Alimentos
+                            <i class="bi bi-egg-fried mr-4"></i>Alimentos
                         </div>
                         <div class="content md:ml-8 ml-20">
                             @foreach ($locales as $local)
-                            @if($local->categoria == 'alimentos')
-                                <ul class="text-lg mb-2">
-                                    <li class="ml-10"><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</li>
-                                </ul>
-                            @endif
-                        @endforeach
+                                @if($local->categoria == 'alimentos')
+                                    <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
     
                 {{-- Acordion Autoservicios --}}
-                <div class="accordion">
+                <div class="accordion border-b border-gray-500">
                     <div class="contentbx">
                         <div class="label">
-                            Autoservicios
+                            <i class="bi bi-cart-fill mr-4"></i>Autoservicios
                         </div>
                         <div class="content md:ml-8 ml-20">
                             @foreach ($locales as $local)
                                 @if($local->categoria == 'autoservicio')
-                                    <ul class="text-lg mb-2">
-                                        <li class="ml-10"><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</li>
-                                    </ul>
+                                <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
                                 @endif
                             @endforeach
                         </div>
@@ -225,35 +253,31 @@
                 </div>
     
                 {{-- Acordion autos --}}
-                <div class="accordion">
+                <div class="accordion border-b border-gray-500">
                     <div class="contentbx">
                         <div class="label">
-                            Autos
+                            <i class="bi bi-car-front-fill mr-4"></i>Autos y motos
                         </div>
                         <div class="content md:ml-8 ml-20">
                             @foreach ($locales as $local)
-                                @if($local->categoria == 'autos')
-                                    <ul class="text-lg mb-2">
-                                        <li class="ml-10"><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</li>
-                                    </ul>
+                                @if($local->categoria == 'autos y motos')
+                                <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
                                 @endif
                             @endforeach
                         </div>
                     </div>
                 </div>
     
-                {{-- Acordion Ropa, Calzado y accesorios --}}
-                <div class="accordion">
+                {{-- Acordion Moda --}}
+                <div class="accordion border-b border-gray-500">
                     <div class="contentbx">
                         <div class="label">
-                            Ropa, Calzado y accesorios
+                            <i class="bi bi-bag-fill mr-4"></i>Moda
                         </div>
                         <div class="content md:ml-8 ml-20">
                             @foreach ($locales as $local)
-                                @if($local->categoria == 'ropa, calzado y accesorios')
-                                    <ul class="text-lg mb-2">
-                                        <li class="ml-10"><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</li>
-                                    </ul>
+                                @if($local->categoria == 'moda')
+                                <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
                                 @endif
                             @endforeach
                         </div>
@@ -261,17 +285,15 @@
                 </div>
     
                 {{-- Acordion Tecnologia --}}
-                <div class="accordion">
+                <div class="accordion border-b border-gray-500">
                     <div class="contentbx">
                         <div class="label">
-                            Tecnologia
+                            <i class="bi bi-phone-fill mr-4"></i>Tecnología
                         </div>
                         <div class="content md:ml-8 ml-20">
                             @foreach ($locales as $local)
                                 @if($local->categoria == 'tecnologia')
-                                    <ul class="text-lg mb-2">
-                                        <li class="ml-10"><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</li>
-                                    </ul>
+                                <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
                                 @endif
                             @endforeach
                         </div>
@@ -279,17 +301,63 @@
                 </div>
     
                 {{-- Acordion Entretenimientos --}}
-                <div class="accordion">
+                <div class="accordion border-b border-gray-500">
                     <div class="contentbx">
                         <div class="label">
-                            Entretenimientos
+                            <i class="bi bi-phone-fill mr-4"></i>Entretenimiento
                         </div>
                         <div class="content md:ml-8 ml-20">
                             @foreach ($locales as $local)
                                 @if($local->categoria == 'entretenimiento')
-                                    <ul class="text-lg mb-2">
-                                        <li class="ml-10"><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</li>
-                                    </ul>
+                                <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Acordion Salud y belleza --}}
+                <div class="accordion border-b border-gray-500">
+                    <div class="contentbx">
+                        <div class="label">
+                            <i class="bi bi-heart-pulse-fill mr-4"></i>Salud y belleza
+                        </div>
+                        <div class="content md:ml-8 ml-20">
+                            @foreach ($locales as $local)
+                                @if($local->categoria == 'salud y belleza')
+                                <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Acordion Departamental --}}
+                <div class="accordion border-b border-gray-500">
+                    <div class="contentbx">
+                        <div class="label">
+                            <i class="bi bi-shop mr-4"></i>Departamental
+                        </div>
+                        <div class="content md:ml-8 ml-20">
+                            @foreach ($locales as $local)
+                                @if($local->categoria == 'departamental')
+                                <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Acordion Otros --}}
+                <div class="accordion border-b border-gray-500">
+                    <div class="contentbx">
+                        <div class="label">
+                            <i class="bi bi-box mr-4"></i>Otros
+                        </div>
+                        <div class="content md:ml-8 ml-20">
+                            @foreach ($locales as $local)
+                                @if($local->categoria == 'otros')
+                                <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
                                 @endif
                             @endforeach
                         </div>
@@ -297,17 +365,15 @@
                 </div>
     
                 {{-- Acordion Locales dispinibles --}}
-                <div class="accordion">
+                <div class="accordion border-b border-gray-500">
                     <div class="contentbx">
                         <div class="label">
-                            Locales disponibles
+                            <i class="bi bi-pin-map-fill mr-4"></i>Locales disponibles
                         </div>
                         <div class="content md:ml-8 ml-20">
                             @foreach ($locales as $local)
-                                @if($local->categoria == 'locales dispinibles')
-                                    <ul class="text-lg mb-2">
-                                        <li class="ml-10"><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</li>
-                                    </ul>
+                                @if($local->categoria == 'locales disponibles')
+                                <p><i class="bi bi-record-fill text-sm mr-2"></i><strong class="mr-2">{{$local->nombre}}</strong>{{$local->local}}</p>                            
                                 @endif
                             @endforeach
                         </div>
@@ -315,58 +381,38 @@
                 </div>
 
             </div>
-            <div data-aos="fade-left" class="mt-5 mx-auto overflow-hidden">
-                <img src="/plano/2F_LasFlores-Planta Comitan-01.jpg" width="650px">
+
+            
+            <div id="zoomimage" class="mt-5 mx-auto my-auto" data-aos="fade-left">
+                <img id="zoomimg" src="/plano/2F_LasFlores-Planta Comitan-01.jpg" alt="Imagen para zoom">
             </div>
         </div>
     </section>
 
     {{-- Invierte con nosotros --}}
-    <section class="overflow-x-hidden font-principal">
+    <section class="bg-gray-200 overflow-x-hidden font-principal">
         <div data-aos="zoom-in-down" class="text-center grid grid-cols-1 md:grid-cols-2 space-x-4 gap-8 items-center container mb-20 mt-20">
             <div>
-                <img loading="lazy" src="/img/BASE.png" alt="Imagen de ejemplo" class="w-full h-auto rounded-lg shadow">
+                <img loading="lazy" src="/img/base-3.jpg" alt="Imagen de ejemplo" class="w-full h-auto rounded-lg shadow">
             </div>
             <div class="">
-                <h1 class="text-6xl font-bold text-gray-800 mb-10">Haz crecer tu negocio</h1>
-                <p class="text-gray-600 text-4xl mb-10">Renta un local</p>
+                <h1 class="text-3xl font-bold text-gray-800 mb-10">CONOCE LOS LOCALES DISPONIBLES</h1>
                 <a href="#seccion-destino" class="bg-lime-500 hover:bg-green-700 hover:text-white text-black rounded-full px-4 py-3">VER LOCALES </a>
             </div>
         </div>
     </section>
 
     {{-- Fomulario y contacto --}}
-    <section class="bg-gray-200 overflow-x-hidden">
+    <section class="bg-white overflow-x-hidden">
         <div class="grid grid-cols-1 md:grid-cols-2 ">
 
-            <div class="p-10">
-                <h1 class="text-3xl font-bold text-center">Para mas información contáctanos</h1>
-                <form class="max-w-md mx-auto">
-                    <div class="relative mt-5">
-                        <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-lime-500 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-                        <label for="floating_outlined" class="absolute text-lg text-gray-900 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-200 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nombre y apellido</label>
-                    </div>
-                    <div class="relative mt-5">
-                        <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-lime-500 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-                        <label for="floating_outlined" class="absolute text-lg text-gray-900 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-200 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Correo electrónico</label>
-                    </div>
-                    <div class="relative mt-5">
-                        <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-lime-500 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-                        <label for="floating_outlined" class="absolute text-lg text-gray-900 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-200 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Teléfono</label>
-                    </div>
-                    <div class="relative mt-5">
-                        <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-lime-500 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-                        <label for="floating_outlined" class="absolute text-lg text-gray-900 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-200 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Mensaje</label>
-                    </div>
-                    <button type="submit" class="mt-5 text-white font-bold bg-lime-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">ENVIAR</button>
-                </form>
-            </div>
+            @include('form')
 
             {{-- Mapa --}}
             <div data-aos="fade-left" class="md:mr-10 ">
                 <div class="md:mr-10 ">
-                <div class="relative overflow-hidden rounded-lg  mt-10">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15324.262158257754!2d-92.114381!3d16.21707!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858d3f18358e6a21%3A0x3f8df99f5f82805!2sPlaza%20Las%20Flores%20Comit%C3%A1n!5e0!3m2!1ses-419!2sus!4v1725933104421!5m2!1ses-419!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="relative overflow-hidden rounded-lg p-4">
+                    <iframe class="w-full h-96" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15324.262158257754!2d-92.114381!3d16.21707!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858d3f18358e6a21%3A0x3f8df99f5f82805!2sPlaza%20Las%20Flores%20Comit%C3%A1n!5e0!3m2!1ses-419!2sus!4v1725933104421!5m2!1ses-419!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="mx-4 mt-3">
                     <p class="text-sm md:text-lg font-bold mb-4"> <i class="bi bi-geo-alt-fill mr-4 text-xl md:text-2xl"></i>Comitán - Boulevard de las Federaciones Km.1260,5 Chichima Acapetahua, 30098 Comitán de Domínguez, Chis., México</p>

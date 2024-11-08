@@ -12,7 +12,7 @@ class LocalpalenqueController extends Controller
      */
     public function index()
     {
-        $locales = localpalenque::orderBy('id', 'desc')->paginate();
+        $locales = localpalenque::orderBy('id', 'desc')->get();
         return view ('palenque.local_plqs.index', compact('locales'));
     }
 

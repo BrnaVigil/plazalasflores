@@ -12,7 +12,7 @@ class LocalviaplazaController extends Controller
      */
     public function index()
     {
-        $locales = localviaplaza::orderBy('id', 'desc')->paginate();
+        $locales = localviaplaza::orderBy('id', 'desc')->get();
         return view ('viaplaza.local_vps.index', compact('locales'));
     }
 

@@ -17,14 +17,10 @@ export default {
 
     theme: {
         extend: {
-            fontFamily: {
-                "principal": ['"Poppins"', 'sans-serif']
-            },
-
-            backgroundImage: {
-                "close-menu": "url('../svg/x-lg.svg')",
-                "open-menu": "url('../svg/text-left.svg')"
-            },
+            colors: {
+                'green-pf': '#00984c',
+                'green-custon': '#BCD530',
+            }
         },
     },
 

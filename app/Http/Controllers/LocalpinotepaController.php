@@ -12,7 +12,7 @@ class LocalpinotepaController extends Controller
      */
     public function index()
     {
-        $locales = localpinotepa::orderBy('id', 'desc')->paginate();
+        $locales = localpinotepa::orderBy('id', 'desc')->get();
         return view ('pinotepa.local_pnts.index', compact('locales'));
     }
 

@@ -12,7 +12,7 @@ class LocalcomitanController extends Controller
      */
     public function index()
     {
-        $locales = localcomitan::orderBy('id', 'desc')->paginate();
+        $locales = localcomitan::orderBy('id', 'desc')->get();
         return view ('comitan.local.index', compact('locales'));
     }
 

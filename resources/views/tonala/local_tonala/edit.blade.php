@@ -15,12 +15,14 @@
                     <option value="" disabled {{ old('categoria', $local_tonala->categoria) == '' ? 'selected' : '' }}>Selecciona una categoría</option>
                     <option value="alimentos" {{ old('categoria', $local_tonala->categoria) == 'alimentos' ? 'selected' : '' }}>Alimentos</option>
                     <option value="autoservicio" {{ old('categoria', $local_tonala->categoria) == 'autoservicio' ? 'selected' : '' }}>Autoservicio</option>
-                    <option value="autos" {{ old('categoria', $local_tonala->categoria) == 'autos' ? 'selected' : '' }}>Autos</option>
-                    <option value="ropa, calzado y accesorios" {{ old('categoria', $local_tonala->categoria) == 'ropa, calzado y accesorios' ? 'selected' : '' }}>Ropa, calzado y accesorios</option>
+                    <option value="autos y motos" {{ old('categoria', $local_tonala->categoria) == 'autos y motos' ? 'selected' : '' }}>Autos y motos</option>
+                    <option value="moda" {{ old('categoria', $local_tonala->categoria) == 'moda' ? 'selected' : '' }}>Moda</option>
                     <option value="tecnologia" {{ old('categoria', $local_tonala->categoria) == 'tecnologia' ? 'selected' : '' }}>Tecnologia</option>
-                    <option value="hogar" {{ old('categoria', $local_tonala->categoria) == 'hogar' ? 'selected' : '' }}>Hogar</option>
                     <option value="entretenimiento" {{ old('categoria', $local_tonala->categoria) == 'entretenimiento' ? 'selected' : '' }}>Entretenimiento</option>
-                    <option value="locales dispinibles" {{ old('categoria', $local_tonala->categoria) == 'locales dispinibles' ? 'selected' : '' }}>Locales disponibles</option>
+                    <option value="departamental" {{ old('categoria', $local_tonala->categoria) == 'departamental' ? 'selected' : '' }}>Departamental</option>
+                    <option value="salud y belleza" {{ old('categoria', $local_tonala->categoria) == 'salud y belleza' ? 'selected' : '' }}>Salud y belleza</option>
+                    <option value="otros" {{ old('categoria', $local_tonala->categoria) == 'otros' ? 'selected' : '' }}>Otros</option>
+                    <option value="locales disponibles" {{ old('categoria', $local_tonala->categoria) == 'locales disponibles' ? 'selected' : '' }}>Locales disponibles</option>
                 </select>
                 <div class="invalid-feedback font-bold">
                     Este campo es requerido                

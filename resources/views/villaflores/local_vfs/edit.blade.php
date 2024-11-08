@@ -15,10 +15,12 @@
                     <option value="" disabled {{ old('categoria', $local_vf->categoria) == '' ? 'selected' : '' }}>Selecciona una categoría</option>
                     <option value="alimentos" {{ old('categoria', $local_vf->categoria) == 'alimentos' ? 'selected' : '' }}>Alimentos</option>
                     <option value="autoservicio" {{ old('categoria', $local_vf->categoria) == 'autoservicio' ? 'selected' : '' }}>Autoservicio</option>
-                    <option value="autos" {{ old('categoria', $local_vf->categoria) == 'autos' ? 'selected' : '' }}>Autos</option>
-                    <option value="ropa, calzado y accesorios" {{ old('categoria', $local_vf->categoria) == 'ropa, calzado y accesorios' ? 'selected' : '' }}>Ropa, calzado y accesorios</option>
+                    <option value="autos y motos" {{ old('categoria', $local_vf->categoria) == 'autos y motos' ? 'selected' : '' }}>Autos y motos</option>
+                    <option value="moda" {{ old('categoria', $local_vf->categoria) == 'moda' ? 'selected' : '' }}>Moda</option>
                     <option value="tecnologia" {{ old('categoria', $local_vf->categoria) == 'tecnologia' ? 'selected' : '' }}>Tecnologia</option>
                     <option value="entretenimiento" {{ old('categoria', $local_vf->categoria) == 'entretenimiento' ? 'selected' : '' }}>Entretenimiento</option>
+                    <option value="departamental" {{ old('categoria', $local_vf->categoria) == 'departamental' ? 'selected' : '' }}>Departamental</option>
+                    <option value="otros" {{ old('categoria', $local_vf->categoria) == 'otros' ? 'selected' : '' }}>Otros</option>
                     <option value="locales disponibles" {{ old('categoria', $local_vf->categoria) == 'locales disponibles' ? 'selected' : '' }}>Locales disponibles</option>
                 </select>
                 <div class="invalid-feedback font-bold">
